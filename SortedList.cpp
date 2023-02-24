@@ -76,7 +76,7 @@ void SortedList<T>::DeleteItem(T item) {
 
 template<class T>
 void SortedList<T>::ResetIterator() {
-
+    currentPos = head;
 }
 
 template<class T>
