@@ -4,12 +4,19 @@
 
 template<class T>
 SortedList<T>::SortedList() {
-
+    length = 0;
+    head = nullptr;
+    currentPos = nullptr;
 }
 
 template<class T>
 void SortedList<T>::MakeEmpty() {
-
+    while (head != nullptr) {
+        NodeT *temp = head;
+        head = head->next;
+        delete temp;
+    }
+    length = 0;
 }
 
 template<class T>
