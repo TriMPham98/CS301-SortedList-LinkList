@@ -76,7 +76,23 @@ void SortedList<T>::PutItem(T item) {
 
 template<class T>
 void SortedList<T>::DeleteItem(T item) {
+    NodeT *currN = head;
+    NodeT *prevN = nullptr;
 
+    while (currN != nullptr) {
+        if (currN->info == item) {
+            if (prevN != nullptr) {
+                prevN->next = currN->next;
+            } else {
+                head = currN->next;
+            }
+            delete currN;
+            --length;
+            break;
+        }
+        prevN = currN;
+        currN = currN->next;
+    }
 }
 
 template<class T>
