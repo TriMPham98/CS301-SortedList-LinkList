@@ -1,6 +1,4 @@
-
 #include "SortedList.h"
-
 
 template<class T>
 SortedList<T>::SortedList() {
@@ -31,6 +29,13 @@ int SortedList<T>::GetLength() const {
 
 template<class T>
 bool SortedList<T>::Contains(T someItem) {
+    NodeT *currPos = head;
+    while (currPos != nullptr) {
+        if (currPos->info == someItem) {
+            return true;
+        }
+        currPos = currPos->next;
+    }
     return false;
 }
 
