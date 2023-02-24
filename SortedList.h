@@ -64,6 +64,7 @@ private:
 
   int length;
   NodeT* head;
+  NodeT* currentPos;
 };
 
 #include "SortedList.cpp"

@@ -29,7 +29,6 @@ bool SortedList<T>::Contains(T someItem) {
 
 template<class T>
 void SortedList<T>::PutItem(T item) {
-
     if (IsFull()) {
         return;
     }
