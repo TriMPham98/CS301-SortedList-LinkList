@@ -19,6 +19,12 @@ void SortedList<T>::MakeEmpty() {
 
 template<class T>
 bool SortedList<T>::IsFull() const {
+    try {
+        NodeT *temp = new NodeT;
+        delete temp;
+    } catch (std::bad_alloc error) {
+        return true;
+    }
     return false;
 }
 
@@ -41,37 +47,37 @@ bool SortedList<T>::Contains(T someItem) {
 
 template<class T>
 void SortedList<T>::PutItem(T item) {
-//    if (IsFull()) {
-//        return;
-//    }
-//
-//    NodeT *insertedNode = new NodeT;
-//    insertedNode->info = item;
-//    insertedNode->next = nullptr;
-//    length++;
-//
-//    if (head == nullptr) {
-//        head = insertedNode;
-//        return;
-//    }
-//
-//    NodeT *currPos = head;
-//    NodeT *prevPos = nullptr;
-//
-//    while (currPos != nullptr) {
-//        if (currPos->info > item) {
-//            insertedNode->next = currPos;
-//            if (currPos == head) {
-//                head = insertedNode;
-//            } else {
-//                prevPos->next = insertedNode;
-//            }
-//            return;
-//        }
-//        prevPos = currPos;
-//        currPos = currPos->next;
-//    }
-//    prevPos->next = insertedNode;
+    if (IsFull()) {
+        return;
+    }
+
+    NodeT *insertedNode = new NodeT;
+    insertedNode->info = item;
+    insertedNode->next = nullptr;
+    length++;
+
+    if (head == nullptr) {
+        head = insertedNode;
+        return;
+    }
+
+    NodeT *currPos = head;
+    NodeT *prevPos = nullptr;
+
+    while (currPos != nullptr) {
+        if (currPos->info > item) {
+            insertedNode->next = currPos;
+            if (currPos == head) {
+                head = insertedNode;
+            } else {
+                prevPos->next = insertedNode;
+            }
+            return;
+        }
+        prevPos = currPos;
+        currPos = currPos->next;
+    }
+    prevPos->next = insertedNode;
 }
 
 template<class T>
