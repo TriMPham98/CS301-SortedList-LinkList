@@ -107,7 +107,7 @@ void SortedList<T>::ResetIterator() {
 }
 
 template<class T>
-int SortedList<T>::GetNextItem() {
+T SortedList<T>::GetNextItem() {
     if (currentPos == nullptr || currentPos->next == nullptr) {
         throw "Out of bounds";
     }
