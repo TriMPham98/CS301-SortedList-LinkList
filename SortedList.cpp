@@ -47,23 +47,33 @@ bool SortedList<T>::Contains(T someItem) {
 
 template<class T>
 void SortedList<T>::PutItem(T item) {
+    // 1. Check if the list is full, if yes, return.
     if (IsFull()) {
         return;
     }
-
+    // 2. Create a new node, set its info to the given item, and set its next to nullptr.
     NodeT *insertedNode = new NodeT;
     insertedNode->info = item;
     insertedNode->next = nullptr;
+    // 3. Increment the length of the list.
     length++;
 
+    // 4. If the list is currently empty (head is nullptr), set the head to the new node and return.
     if (head == nullptr) {
         head = insertedNode;
         return;
     }
-
+    // 5. Otherwise, set current position to head and previous position to nullptr.
     NodeT *currPos = head;
     NodeT *prevPos = nullptr;
 
+    // 6. While current position is not nullptr:
+    // a. Check if the info of the current node is greater than the given item.
+    // b. If true:
+    // i. Set the next of the new node to the current node.
+    // ii. If the current node is the head, set the head to the new node, otherwise set the next of the previous node to the new node.
+    // iii. Return.
+    // c. If false, set previous position to current position and current position to the next node.
     while (currPos != nullptr) {
         if (currPos->info > item) {
             insertedNode->next = currPos;
@@ -77,6 +87,9 @@ void SortedList<T>::PutItem(T item) {
         prevPos = currPos;
         currPos = currPos->next;
     }
+    // 7. If the while loop completes without returning,
+    // it means that the new node is the largest element in the list.
+    // Set the next of the previous node to the new node.
     prevPos->next = insertedNode;
 }
 
