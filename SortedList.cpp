@@ -58,7 +58,6 @@ void SortedList<T>::PutItem(T item) {
     insertedNode->next = nullptr;
     // 3. Increment the length of the list.
     length++;
-
     // 4. If the list is currently empty (head is nullptr),
     // set the head to the new node and return.
     if (head == nullptr) {
