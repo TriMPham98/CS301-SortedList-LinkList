@@ -51,19 +51,22 @@ void SortedList<T>::PutItem(T item) {
     if (IsFull()) {
         return;
     }
-    // 2. Create a new node, set its info to the given item, and set its next to nullptr.
+    // 2. Create a new node, set its info to the given item,
+    // and set its next to nullptr.
     NodeT *insertedNode = new NodeT;
     insertedNode->info = item;
     insertedNode->next = nullptr;
     // 3. Increment the length of the list.
     length++;
 
-    // 4. If the list is currently empty (head is nullptr), set the head to the new node and return.
+    // 4. If the list is currently empty (head is nullptr),
+    // set the head to the new node and return.
     if (head == nullptr) {
         head = insertedNode;
         return;
     }
-    // 5. Otherwise, set current position to head and previous position to nullptr.
+    // 5. Otherwise, set current position to head and
+    // previous position to nullptr.
     NodeT *currPos = head;
     NodeT *prevPos = nullptr;
 
@@ -74,7 +77,8 @@ void SortedList<T>::PutItem(T item) {
     // ii. If the current node is the head, set the head to the new node,
     //     otherwise set the next of the previous node to the new node.
     // iii. Return.
-    // c. If false, set previous position to current position and current position to the next node.
+    // c. If false, set previous position to current position
+    // and current position to the next node.
     while (currPos != nullptr) {
         if (currPos->info > item) {
             insertedNode->next = currPos;
