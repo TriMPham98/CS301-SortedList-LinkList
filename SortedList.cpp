@@ -68,7 +68,6 @@ void SortedList<T>::PutItem(T item) {
     // previous position to nullptr.
     NodeT *currPos = head;
     NodeT *prevPos = nullptr;
-
     // 6. While current position is not nullptr:
     // a. Check if the info of the current node is greater than the given item.
     // b. If true:
